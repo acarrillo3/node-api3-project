@@ -48,7 +48,7 @@ router.delete("/:id", (req, res) => {
 
 router.put("/:id", (req, res) => {
   // do your magic!
-  const newPost = req.body;
+  const postToUpdate = req.body;
   const id = req.params.id;
 
   db.getById(id).then(post => {
@@ -57,8 +57,8 @@ router.put("/:id", (req, res) => {
     }
   });
 
-  if (newPost.text) {
-    db.update(id, newPost)
+  if (postToUpdate.text) {
+    db.update(id, postToUpdate)
       .then(updated => {
         res.status(200).json(updated);
       })

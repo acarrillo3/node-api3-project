@@ -17,4 +17,5 @@
 ## second
 - write the CRUD functions request and the routes
 - modify `server.js`
+- fixed the routes in file `postRouter.js`
 - then write the middleware
