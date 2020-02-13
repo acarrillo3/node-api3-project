@@ -15,7 +15,11 @@
 - open `localhost:4000
 
 ## second
-- write the CRUD functions request and the routes
+- write the CRUD functions request and the routes for posts
 - modify `server.js`
 - fixed the routes in file `postRouter.js`
+
+### third 
+-write the logger
+- work on the CRUD functions and the routes for users
 - then write the middleware
