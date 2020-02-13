@@ -14,48 +14,34 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:id", validatePostId, (req, res) => {
   // do your magic!
   const id = req.params.id;
   db.getById(id)
     .then(post => {
-      if (post) {
-        res.status(200).json(post);
-      } else {
-        res.status(404).json({ message: "Unable to retrieve post by that ID" });
-      }
+      res.status(200).json(post);
     })
     .catch(error => {
       res.status(500).json({ message: "Unable to retrive post" });
     });
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", validatePostId, (req, res) => {
   // do your magic!
   const id = req.params.id;
   db.remove(id)
     .then(deleted => {
-      if (deleted) {
-        res.status(200).json(deleted);
-      } else {
-        res.status(404).json({ message: "Unable to find post by that ID" });
-      }
+      res.status(200).json(deleted);
     })
     .catch(error => {
       res.status(500).json({ message: "Unable to delete that post" });
     });
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", validatePostId, (req, res) => {
   // do your magic!
   const postToUpdate = req.body;
   const id = req.params.id;
-
-  db.getById(id).then(post => {
-    if (!post) {
-      res.status(404).json({ message: "Unable to find post by that ID" });
-    }
-  });
 
   if (postToUpdate.text) {
     db.update(id, postToUpdate)
@@ -74,6 +60,14 @@ router.put("/:id", (req, res) => {
 
 function validatePostId(req, res, next) {
   // do your magic!
+  const id = req.params.id;
+
+  db.getById(id).then(post => {
+    if (!post) {
+      res.status(404).json({ message: "Unable to find post by that ID" });
+    }
+  });
+  next();
 }
 
 module.exports = router;
