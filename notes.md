@@ -23,3 +23,4 @@
 -write the logger
 - work on the CRUD functions and the routes for users
 - then write the middleware
+    -create the validateUserId function and implemented on each route of the userRouter
