@@ -124,13 +124,12 @@ function validateUser(req, res, next) {
   // do your magic!
   const body = req.body;
 
-  if (body) {
-    if (!body.name) {
-      res.status(400).json({ message: "Missing required name field" });
-    }
-    next();
-  } else {
+  if (Object.keys(body).length === 0) {
     res.status(400).json({ message: "missing user data" });
+  } else if (!body.name) {
+      res.status(400).json({ message: "Missing required name field" });
+  } else {
+    next();
   }
 }
 
@@ -138,13 +137,12 @@ function validatePost(req, res, next) {
   // do your magic!
   const body = req.body;
 
-  if (body) {
-    if (!body.text) {
-      res.status(400).json({ message: "Missing required text field" });
-    }
-    next();
-  } else {
+  if (Object.keys(body).length === 0) {
     res.status(400).json({ message: "Missing post data" });
+  } else if (!body.text) {
+      res.status(400).json({ message: "Missing required text field" });
+    } else {
+    next();
   }
 }
 
