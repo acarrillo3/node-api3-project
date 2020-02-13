@@ -15,4 +15,5 @@
 - open `localhost:4000
 
 ## second
-- write the CRUD functions
+- write the CRUD functions and the routes
+- then write the middleware
