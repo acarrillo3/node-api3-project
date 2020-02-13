@@ -15,5 +15,6 @@
 - open `localhost:4000
 
 ## second
-- write the CRUD functions and the routes
+- write the CRUD functions request and the routes
+- modify `server.js`
 - then write the middleware
